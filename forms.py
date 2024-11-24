@@ -22,6 +22,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, Decim
 from wtforms.fields.core import DateField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional, NumberRange
 from apps import App
+from datetime import datetime
 
 
 class RegistrationForm(FlaskForm):
@@ -208,3 +209,40 @@ class StreakForm(FlaskForm):
     notes = StringField('Notes (Optional)', validators=[Optional()])
     
     submit = SubmitField('Save Streak')
+
+class MoodTrackerForm(FlaskForm):
+    """Form to record the user's mood before and after a workout, additional notes, and date."""
+    
+    mood_before = SelectField(
+        'Mood Before Workout',
+        choices=[
+            ('Happy', 'Happy'),
+            ('Sad', 'Sad'),
+            ('Neutral', 'Neutral'),
+            ('Excited', 'Excited'),
+            ('Tired', 'Tired'),
+            ('Stressed', 'Stressed'),
+            ('Motivated', 'Motivated')
+        ],
+        validators=[DataRequired()]
+    )
+    
+    mood_after = SelectField(
+        'Mood After Workout',
+        choices=[
+            ('Happy', 'Happy'),
+            ('Sad', 'Sad'),
+            ('Neutral', 'Neutral'),
+            ('Excited', 'Excited'),
+            ('Tired', 'Tired'),
+            ('Stressed', 'Stressed'),
+            ('Motivated', 'Motivated')
+        ],
+        validators=[DataRequired()]
+    )
+    
+    notes = TextAreaField('Additional Notes', validators=[Optional(), Length(max=200)])
+    
+    workout_id = StringField('Workout ID', validators=[DataRequired(), Length(max=50)])
+    
+    submit = SubmitField('Save Mood')

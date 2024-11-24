@@ -64,6 +64,9 @@
         <p class="text-center">No Workout plans assigned to you at the moment.</p>
       {% endif %}
     </div>
+    <form action="{{ url_for('mood_tracker') }}" method="get">
+      <button type="submit" class="btn btn-primary btn-block">Finish Workout</button>
+    </form>
   </main>
 
   <!-- Bootstrap JS, Popper.js, and jQuery -->

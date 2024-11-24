@@ -24,7 +24,7 @@ from flask import render_template, session, url_for, flash, redirect, request, F
 from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from tabulate import tabulate
-from forms import HistoryForm, RegistrationForm, LoginForm, CalorieForm, UserProfileForm, EnrollForm,ReviewForm, ProgressForm, StreakForm
+from forms import HistoryForm, RegistrationForm, LoginForm, CalorieForm, UserProfileForm, EnrollForm,ReviewForm, ProgressForm, StreakForm, MoodTrackerForm
 from insert_db_data import insertfooddata,insertexercisedata
 from insert_excercises import coaching_videos
 import schedule
@@ -33,6 +33,8 @@ import time
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
+from datetime import datetime
+
 
 app = Flask(__name__, template_folder='templates', static_url_path='/static')
 app.secret_key = 'secret'
@@ -1953,7 +1955,7 @@ def manage_plans():
 
     return render_template("manage_plans.html", plans=plans, students=students, edit_plan=plan, edit_plan_id=edit_plan_id)
 
-@app.route("/student_plans", methods=["GET"])
+@app.route("/student_plans", methods=["GET","POST"])
 def student_plans():
     if not session.get("email"):
         return redirect(url_for("login"))
@@ -1965,6 +1967,49 @@ def student_plans():
     assigned_plans = student.get("assigned_plans", [])
 
     return render_template("student_plans.html", assigned_plans=assigned_plans)
+
+@app.route('/mood_tracker', methods=['GET', 'POST'])
+def mood_tracker():
+    if not session.get("email"):
+        return redirect(url_for("login"))
+    form = MoodTrackerForm()
+    
+    if form.validate_on_submit():
+        # Handle form submission
+# Convert date to datetime before inserting
+        mood_data = {
+            "email": session.get('email'),
+            "date": datetime.now(),
+            "mood_before": form.mood_before.data,
+            "mood_after": form.mood_after.data,
+            "notes": form.notes.data,
+            "workout_id": form.workout_id.data,
+        }
+
+        mongo.db.mood_logs.insert_one(mood_data)  # Save the mood entry in the database
+        flash("Mood entry saved successfully!", "success")
+        return redirect(url_for('mood_history'))  # Redirect to the mood history page
+    
+    # Render the form page for GET requests
+    return render_template('mood_tracker.html', title='Mood Tracker', form=form)
+
+@app.route('/mood_history', methods=['GET'])
+def mood_history():
+    if not session.get("email"):
+        return redirect(url_for("login"))
+
+    # Get the logged-in student's profile
+    student_email = session["email"]
+    student = mongo.db.profile.find_one({"email": student_email})
+
+    # Check if student_profile is found
+    if not student:
+        flash("Student profile not found. Please log in with a valid student account.", "error")
+        return redirect(url_for("login"))
+    mood_logs = mongo.db.mood_logs.find({"email": student_email}).sort("date", -1)  # Sort by date
+
+    return render_template('mood_history.html', mood_logs=mood_logs)
+
 
 
 if __name__ == '__main__':
