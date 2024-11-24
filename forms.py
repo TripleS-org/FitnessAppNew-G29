@@ -36,7 +36,15 @@ class RegistrationForm(FlaskForm):
     # Student-specific fields
     weight = FloatField('Weight', validators=[Optional(), NumberRange(min=20, max=200)])
     height = FloatField('Height', validators=[Optional(), NumberRange(min=100, max=250)])
-    goal = StringField('Goal', validators=[Optional(), Length(min=2, max=50)])
+    goal = SelectField(
+    'Goal',
+    choices=[
+        ('gain_weight', 'Gain Weight'),
+        ('lose_weight', 'Lose Weight'),
+        ('build_muscle', 'Build Muscle')
+    ],
+    validators=[Optional()]
+)   
     target_weight = FloatField('Target Weight', validators=[Optional(), NumberRange(min=20, max=200)])
     coach = SelectField('Coach', choices=[], validators=[Optional()])  # Dropdown for student to select a coach
     
