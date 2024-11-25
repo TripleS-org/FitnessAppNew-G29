@@ -1,35 +1,46 @@
 {% extends "layout.html" %}
 {% block content %}
-<html></html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Your Data</title>
+    <style>
+        .card {
+            margin-bottom: 20px; /* Add some spacing between cards */
+        }
+    </style>
 </head>
 <body>
     <h1 style="color: white;">Your Data</h1>
-
 </body>
-<section class="container-fluid ">
+
+<section class="container-fluid">
     <div class="container site-section" id="yoga-1">
         <div class="row">
+            <!-- Display Height -->
             <div class="col-4">
-                <div class="card"><img class="img-thumbnail img-fluid" src="../static/img/height.jpg">
+                <div class="card">
+                    <img class="img-thumbnail img-fluid" src="../static/img/height.jpg">
                     <div class="card-body">
                         <h4 class="card-title">Your Height</h4>
                         <p class="card-text">{{ user_data.height }} cms<br><br></p>
                     </div>
                 </div>
             </div>
+            <!-- Display Weight -->
             <div class="col-4">
-                <div class="card"><img class="img-thumbnail img-fluid" src="../static/img/weight.png">
+                <div class="card">
+                    <img class="img-thumbnail img-fluid" src="../static/img/weight.png">
                     <div class="card-body">
                         <h4 class="card-title">Your Weight</h4>
                         <p class="card-text">{{ user_data.weight }} kgs<br><br></p>
                     </div>
                 </div>
             </div>
+            <!-- Display Target Weight -->
             <div class="col-4">
-                <div class="card"><img class="img-thumbnail img-fluid" src="../static/img/weightgoal.jpg"></a>
+                <div class="card">
+                    <img class="img-thumbnail img-fluid" src="../static/img/weightgoal.jpg">
                     <div class="card-body">
                         <h4 class="card-title">Your Target Weight</h4>
                         <p class="card-text">{{ user_data.target_weight }} Kgs<br><br></p>
@@ -37,33 +48,63 @@
                 </div>
             </div>
         </div>
+        <br>
+        <!-- New Sections for Water and Calories -->
+        <div class="row justify-content-center">
+            <!-- Display Water Intake -->
+            <div class="col-4">
+                <div class="card">
+                    <img class="img-thumbnail img-fluid" src="static\img\freehand-illustration-of-an-isolated-water-jug-black-outlines-on-white-background-PNK0JR.jpg">
+                    <div class="card-body">
+                        <h4 class="card-title">Your Water Intake</h4>
+                        <p class="card-text">{{ user_data.water_intake }} Liters<br><br></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Display Calories Burned -->
+            <div class="col-4">
+                <div class="card">
+                    <img class="img-thumbnail img-fluid" src="static\img\burning-calories-black-vector-icon-2PPR5FF.jpg">
+                    <div class="card-body">
+                        <h4 class="card-title">Calories Burned</h4>
+                        <p class="card-text">{{ user_data.calories_burned }} kcal<br><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Display Graph -->
         <div>
             {{ graph_html|safe }}
-
-            <h2 style="color: white;">Last 10 Entries</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th style="color: white;">Date</th>
-                        <th style="color: white;">Weight</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for entry in last_10_entries %}
-                        <tr>
-                            <td style="color: white;">{{ entry['date'] }}</td>
-                            <td style="color: white;">{{ entry['weight'] }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
         </div>
+
+        <!-- Last 10 Entries -->
+        <h2 style="color: white;">Last 10 Entries</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="color: white;">Date</th>
+                    <th style="color: white;">Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in last_10_entries %}
+                    <tr>
+                        <td style="color: white;">{{ entry['date'] }}</td>
+                        <td style="color: white;">{{ entry['weight'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </section>
+
+<!-- Update Data Button -->
 <section class="container-fluid">
     <div class="container site-section" id="yoga-1">
         <a href="{{ url_for('user_profile') }}" class="btn btn-primary">Update Data</a>
     </div>
 </section>
+
 </html>
 {% endblock content %}

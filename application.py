@@ -722,49 +722,56 @@ def display_profile():
 @app.route("/user_profile", methods=['GET', 'POST'])
 def user_profile():
     """
-    user_profile() function displays the UserProfileForm (user_profile.html) template
-    route "/user_profile" will redirect to user_profile() function.
-    user_profile() called and if the form is submitted then various values are fetched and updated into the database entries
-    Input: Email, height, weight, goal, Target weight
-    Output: Value update in database and redirected to home login page.
+    user_profile() function displays the UserProfileForm (user_profile.html) template.
+    It updates or inserts the user's profile data based on the current date.
     """
-    now = datetime.now()
-    now = now.strftime('%Y-%m-%d')
+    now = datetime.now().strftime('%Y-%m-%d')  # Get the current date in YYYY-MM-DD format
 
     if session.get('email'):
         form = UserProfileForm()
+        
         if form.validate_on_submit():
-            print('validated')
-            if request.method == 'POST':
-                print('post')
-                email = session.get('email')
-                weight = request.form.get('weight')
-                height = request.form.get('height')
-                goal = request.form.get('goal')
-                target_weight = request.form.get('target_weight')
-                temp = mongo.db.profile.find_one({'email': email, 'date': now}, {'height', 'weight', 'goal', 'target_weight'})
-                if temp is not None:
-                    mongo.db.profile.update_one({'email': email, 'date': now},
+            email = session.get('email')
+            weight = form.weight.data
+            height = form.height.data
+            goal = form.goal.data
+            target_weight = form.target_weight.data
+            water_intake = form.water_intake.data
+            calories_burned = form.calories_burned.data
+
+            # Check if there's an existing entry for today's date
+            temp = mongo.db.profile.find_one({'email': email, 'date': now})
+            if temp:
+                # Update the profile if the entry exists
+                mongo.db.profile.update_one({'email': email, 'date': now},
                                             {'$set': {
                                                 'weight': weight,
                                                 'height': height,
                                                 'goal': goal,
-                                                'target_weight':target_weight}})
-                else:
-                    mongo.db.profile.insert({'email': email,
-                                             'date': now,
-                                             'height': height,
-                                             'weight': weight,
-                                             'goal': goal,
-                                             'target_weight': target_weight})
-                
-                flash(f'User Profile Updated', 'success')
+                                                'target_weight': target_weight,
+                                                'water_intake': water_intake,
+                                                'calories_burned': calories_burned
+                                            }})
+            else:
+                # Insert a new profile entry if not found
+                mongo.db.profile.insert_one({
+                    'email': email,
+                    'date': now,
+                    'height': height,
+                    'weight': weight,
+                    'goal': goal,
+                    'target_weight': target_weight,
+                    'water_intake': water_intake,
+                    'calories_burned': calories_burned
+                })
 
-                return redirect(url_for('display_profile'))
+            flash('User Profile Updated', 'success')
+            return redirect(url_for('display_profile'))
+
     else:
         return redirect(url_for('login'))
-    return render_template('user_profile.html', status=True, form=form)
 
+    return render_template('user_profile.html', status=True, form=form)
 
 @app.route("/history", methods=['GET'])
 def history():

@@ -171,6 +171,10 @@ class UserProfileForm(FlaskForm):
         'Target Weight', validators=[
             DataRequired(), Length(
                 min=2, max=20)])
+    
+    water_intake = IntegerField('Water Intake (ml)', validators=[DataRequired()])
+    calories_burned = IntegerField('Calories Burned', validators=[DataRequired()])
+    
     submit = SubmitField('Update')
 
 
