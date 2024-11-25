@@ -34,6 +34,10 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
 from datetime import datetime
+import random
+
+recipes_df = pd.read_csv("food_data/recipes.csv")  # Update with your file path
+
 
 
 app = Flask(__name__, template_folder='templates', static_url_path='/static')
@@ -2010,7 +2014,17 @@ def mood_history():
 
     return render_template('mood_history.html', mood_logs=mood_logs)
 
+@app.route('/daily_recipe')
+def daily_recipe():
+    # Use today's date as a seed
+    today = datetime.now().strftime('%Y-%m-%d')
+    random.seed(today)  # Set seed based on the current date
 
+    # Select a random recipe deterministically for the day
+    recipe_index = random.randint(0, len(recipes_df) - 1)
+    daily_recipe = recipes_df.iloc[recipe_index].to_dict()
+
+    return render_template('daily_recipe.html', recipe=daily_recipe)
 
 if __name__ == '__main__':
     app.run(debug=True)
