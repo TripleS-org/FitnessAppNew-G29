@@ -2,67 +2,96 @@
 {% block content %}
 <html>
   
-        <div class="content-section">
-            <form method="POST" action="{{ url_for('user_profile') }}" name="UserProfileForm()">
-                {{ form.hidden_tag() }}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Update your data</legend>
-                    <div class="form-group">
-                        
-                        {{ form.height.label(class="form-control-label") }} (cms)
-                        {% if form.height.errors %}
-                            {{ form.height(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.height.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.height(class="form-control form-control-lg") }}
-                        {% endif %}
-                        {{ form.weight.label(class="form-control-label") }} (kgs)
-                        {% if form.weight.errors %}
-                            {{ form.weight(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.weight.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.weight(class="form-control form-control-lg") }}
-                        {% endif %}
-                        {{ form.goal.label(class="form-control-label") }}
-                        {% if form.goal.errors %}
-                            {{ form.goal(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.goal.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.goal(class="form-control form-control-lg") }}
-                        {% endif %}
-                        {{ form.target_weight.label(class="form-control-label") }} (kgs)
-                        {% if form.target_weight.errors %}
-                            {{ form.target_weight(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.target_weight.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.target_weight(class="form-control form-control-lg") }}
-                        {% endif %}
-                    </div> 
-                </fieldset>
+    <div class="content-section">
+        <form method="POST" action="{{ url_for('user_profile') }}" name="UserProfileForm()">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Update your data</legend>
                 <div class="form-group">
-                    {{ form.submit(class="btn btn-outline-info") }}
-                </div>  
-                
-            
-        </div>
-        
+                    
+                    <!-- Height Field -->
+                    {{ form.height.label(class="form-control-label") }} (cms)
+                    {% if form.height.errors %}
+                        {{ form.height(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.height.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.height(class="form-control form-control-lg") }}
+                    {% endif %}
+
+                    <!-- Weight Field -->
+                    {{ form.weight.label(class="form-control-label") }} (kgs)
+                    {% if form.weight.errors %}
+                        {{ form.weight(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.weight.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.weight(class="form-control form-control-lg") }}
+                    {% endif %}
+
+                    <!-- Goal Field -->
+                    {{ form.goal.label(class="form-control-label") }}
+                    {% if form.goal.errors %}
+                        {{ form.goal(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.goal.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.goal(class="form-control form-control-lg") }}
+                    {% endif %}
+
+                    <!-- Target Weight Field -->
+                    {{ form.target_weight.label(class="form-control-label") }} (kgs)
+                    {% if form.target_weight.errors %}
+                        {{ form.target_weight(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.target_weight.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.target_weight(class="form-control form-control-lg") }}
+                    {% endif %}
+
+                    <!-- Water Intake Field -->
+                    {{ form.water_intake.label(class="form-control-label") }} (liters)
+                    {% if form.water_intake.errors %}
+                        {{ form.water_intake(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.water_intake.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.water_intake(class="form-control form-control-lg") }}
+                    {% endif %}
+
+                    <!-- Calories Burned Field -->
+                    {{ form.calories_burned.label(class="form-control-label") }} (kcal)
+                    {% if form.calories_burned.errors %}
+                        {{ form.calories_burned(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.calories_burned.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.calories_burned(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div> 
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>  
+        </form>
     </div>
-</div>
-</div>
+</html>
 {% endblock content %}

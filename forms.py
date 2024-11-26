@@ -22,6 +22,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, Decim
 from wtforms.fields.core import DateField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional, NumberRange
 from apps import App
+from datetime import datetime
 
 
 class RegistrationForm(FlaskForm):
@@ -35,7 +36,15 @@ class RegistrationForm(FlaskForm):
     # Student-specific fields
     weight = FloatField('Weight', validators=[Optional(), NumberRange(min=20, max=200)])
     height = FloatField('Height', validators=[Optional(), NumberRange(min=100, max=250)])
-    goal = StringField('Goal', validators=[Optional(), Length(min=2, max=50)])
+    goal = SelectField(
+    'Goal',
+    choices=[
+        ('gain_weight', 'Gain Weight'),
+        ('lose_weight', 'Lose Weight'),
+        ('build_muscle', 'Build Muscle')
+    ],
+    validators=[Optional()]
+)   
     target_weight = FloatField('Target Weight', validators=[Optional(), NumberRange(min=20, max=200)])
     coach = SelectField('Coach', choices=[], validators=[Optional()])  # Dropdown for student to select a coach
     
@@ -162,6 +171,10 @@ class UserProfileForm(FlaskForm):
         'Target Weight', validators=[
             DataRequired(), Length(
                 min=2, max=20)])
+    
+    water_intake = IntegerField('Water Intake (ml)', validators=[DataRequired()])
+    calories_burned = IntegerField('Calories Burned', validators=[DataRequired()])
+    
     submit = SubmitField('Update')
 
 
@@ -208,3 +221,40 @@ class StreakForm(FlaskForm):
     notes = StringField('Notes (Optional)', validators=[Optional()])
     
     submit = SubmitField('Save Streak')
+
+class MoodTrackerForm(FlaskForm):
+    """Form to record the user's mood before and after a workout, additional notes, and date."""
+    
+    mood_before = SelectField(
+        'Mood Before Workout',
+        choices=[
+            ('Happy', 'Happy'),
+            ('Sad', 'Sad'),
+            ('Neutral', 'Neutral'),
+            ('Excited', 'Excited'),
+            ('Tired', 'Tired'),
+            ('Stressed', 'Stressed'),
+            ('Motivated', 'Motivated')
+        ],
+        validators=[DataRequired()]
+    )
+    
+    mood_after = SelectField(
+        'Mood After Workout',
+        choices=[
+            ('Happy', 'Happy'),
+            ('Sad', 'Sad'),
+            ('Neutral', 'Neutral'),
+            ('Excited', 'Excited'),
+            ('Tired', 'Tired'),
+            ('Stressed', 'Stressed'),
+            ('Motivated', 'Motivated')
+        ],
+        validators=[DataRequired()]
+    )
+    
+    notes = TextAreaField('Additional Notes', validators=[Optional(), Length(max=200)])
+    
+    workout_id = StringField('Workout ID', validators=[DataRequired(), Length(max=50)])
+    
+    submit = SubmitField('Save Mood')
