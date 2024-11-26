@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <h1 class="mt-4">Today's Recipe Recommendation</h1>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3 class="card-title">{{ recipe['Title'] }}</h3>
+            <p><strong>Ingredients:</strong> {{ recipe['Cleaned_Ingredients'] }}</p>
+            <p><strong>Instructions:</strong> {{ recipe['Instructions'] }}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

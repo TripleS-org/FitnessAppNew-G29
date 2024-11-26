@@ -24,7 +24,7 @@ from flask import render_template, session, url_for, flash, redirect, request, F
 from flask_mail import Mail, Message
 from flask_pymongo import PyMongo
 from tabulate import tabulate
-from forms import HistoryForm, RegistrationForm, LoginForm, CalorieForm, UserProfileForm, EnrollForm,ReviewForm, ProgressForm, StreakForm
+from forms import HistoryForm, RegistrationForm, LoginForm, CalorieForm, UserProfileForm, EnrollForm,ReviewForm, ProgressForm, StreakForm, MoodTrackerForm
 from insert_db_data import insertfooddata,insertexercisedata
 from insert_excercises import coaching_videos
 import schedule
@@ -33,6 +33,12 @@ import time
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
+from datetime import datetime
+import random
+
+recipes_df = pd.read_csv("food_data/recipes.csv")  # Update with your file path
+
+
 
 app = Flask(__name__, template_folder='templates', static_url_path='/static')
 app.secret_key = 'secret'
@@ -680,85 +686,138 @@ def display_profile():
     """
     Display user profile and graph
     """
-    now = datetime.now()
-    now = now.strftime('%Y-%m-%d')
+    now = datetime.now().strftime('%Y-%m-%d')
 
     if session.get('email'):
         email = session.get('email')
-        user_data = mongo.db.profile.find_one({'email': email})
-        target_weight=float(user_data['target_weight'])
+
+        # Fetch today's user profile data
+        user_data = mongo.db.profile.find_one({'email': email, 'date': now})
+        if not user_data:
+            flash("No profile data found for today!", "error")
+            return redirect(url_for('user_profile'))
+
+        target_weight = float(user_data['target_weight'])
+
+        # Fetch all historical data for this user
         user_data_hist = list(mongo.db.profile.find({'email': email}))
+        if not user_data_hist:
+            flash("No historical weight data available.", "info")
+            user_data_hist = []
+        else:
+            # Convert date strings to date objects and remove duplicates
+            unique_dates = set()
+            cleaned_data_hist = []
+            for entry in user_data_hist:
+                entry['date'] = datetime.strptime(entry['date'], '%Y-%m-%d').date()
+                if entry['date'] not in unique_dates:
+                    unique_dates.add(entry['date'])
+                    cleaned_data_hist.append(entry)
 
-        for entry in user_data_hist:
-            entry['date'] = datetime.strptime(entry['date'], '%Y-%m-%d').date()
+            # Sort data by date
+            sorted_user_data_hist = sorted(cleaned_data_hist, key=lambda x: x['date'])
 
-        sorted_user_data_hist = sorted(user_data_hist, key=lambda x: x['date'])
-        # Extracting data for the graph
+        # Debugging: Print historical data after cleaning and sorting
+        print("Historical Data (Cleaned and Sorted):", sorted_user_data_hist)
+
+        # Extract graph data
         dates = [entry['date'] for entry in sorted_user_data_hist]
         weights = [float(entry['weight']) for entry in sorted_user_data_hist]
 
-        # Plotting Graph 
-        fig = px.line(x=dates, y=weights, labels={'x': 'Date', 'y': 'Weight'}, title='Progress',markers=True,line_shape='spline')
-        fig.add_trace(go.Scatter(x=dates, y=[target_weight] * len(dates),mode='lines', line=dict(color='green', width=1, dash='dot'), name='Target Weight'))
-        fig.update_yaxes(range=[min(min(weights),target_weight) - 5, max(max(weights),target_weight) + 5])
-        fig.update_xaxes(range=[min(dates),now]) 
-        # Converting to JSON
-        graph_html = fig.to_html(full_html=False)
+        # Debugging: Print extracted graph data
+        print("Graph Dates:", dates)
+        print("Graph Weights:", weights)
 
+        # Plotting the graph
+        if dates and weights:
+            fig = px.line(
+                x=dates,
+                y=weights,
+                labels={'x': 'Date', 'y': 'Weight'},
+                title='Progress',
+                markers=True,
+                line_shape='spline'
+            )
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=[target_weight] * len(dates),
+                mode='lines',
+                line=dict(color='green', width=1, dash='dot'),
+                name='Target Weight'
+            ))
+            fig.update_yaxes(range=[min(min(weights), target_weight) - 5, max(max(weights), target_weight) + 5])
+            fig.update_xaxes(range=[min(dates), datetime.strptime(now, '%Y-%m-%d').date()])
+            graph_html = fig.to_html(full_html=False)
+        else:
+            graph_html = "<p>No graph data available.</p>"
+
+        # Fetch last 10 entries
         last_10_entries = sorted_user_data_hist[-10:]
+        print("Last 10 Entries:", last_10_entries)
 
-        return render_template('display_profile.html', status=True, user_data=user_data, graph_html=graph_html, last_10_entries=last_10_entries)
-    else:
-        return redirect(url_for('login'))
-    #return render_template('user_profile.html', status=True, form=form)#
+        return render_template(
+            'display_profile.html',
+            status=True,
+            user_data=user_data,
+            graph_html=graph_html,
+            last_10_entries=last_10_entries
+        )
 
+    return redirect(url_for('login'))
 
 @app.route("/user_profile", methods=['GET', 'POST'])
 def user_profile():
     """
-    user_profile() function displays the UserProfileForm (user_profile.html) template
-    route "/user_profile" will redirect to user_profile() function.
-    user_profile() called and if the form is submitted then various values are fetched and updated into the database entries
-    Input: Email, height, weight, goal, Target weight
-    Output: Value update in database and redirected to home login page.
+    user_profile() function displays the UserProfileForm (user_profile.html) template.
+    It updates or inserts the user's profile data based on the current date.
     """
-    now = datetime.now()
-    now = now.strftime('%Y-%m-%d')
+    now = datetime.now().strftime('%Y-%m-%d')  # Get the current date in YYYY-MM-DD format
 
     if session.get('email'):
         form = UserProfileForm()
+        
         if form.validate_on_submit():
-            print('validated')
-            if request.method == 'POST':
-                print('post')
-                email = session.get('email')
-                weight = request.form.get('weight')
-                height = request.form.get('height')
-                goal = request.form.get('goal')
-                target_weight = request.form.get('target_weight')
-                temp = mongo.db.profile.find_one({'email': email, 'date': now}, {'height', 'weight', 'goal', 'target_weight'})
-                if temp is not None:
-                    mongo.db.profile.update_one({'email': email, 'date': now},
+            email = session.get('email')
+            weight = form.weight.data
+            height = form.height.data
+            goal = form.goal.data
+            target_weight = form.target_weight.data
+            water_intake = form.water_intake.data
+            calories_burned = form.calories_burned.data
+
+            # Check if there's an existing entry for today's date
+            temp = mongo.db.profile.find_one({'email': email, 'date': now})
+            if temp:
+                # Update the profile if the entry exists
+                mongo.db.profile.update_one({'email': email, 'date': now},
                                             {'$set': {
                                                 'weight': weight,
                                                 'height': height,
                                                 'goal': goal,
-                                                'target_weight':target_weight}})
-                else:
-                    mongo.db.profile.insert({'email': email,
-                                             'date': now,
-                                             'height': height,
-                                             'weight': weight,
-                                             'goal': goal,
-                                             'target_weight': target_weight})
-                
-                flash(f'User Profile Updated', 'success')
+                                                'target_weight': target_weight,
+                                                'water_intake': water_intake,
+                                                'calories_burned': calories_burned
+                                            }})
+            else:
+                # Insert a new profile entry if not found
+                mongo.db.profile.insert_one({
+                    'email': email,
+                    'date': now,
+                    'height': height,
+                    'weight': weight,
+                    'goal': goal,
+                    'target_weight': target_weight,
+                    'water_intake': water_intake,
+                    'calories_burned': calories_burned
+                })
 
-                return redirect(url_for('display_profile'))
+            flash('User Profile Updated', 'success')
+            return redirect(url_for('display_profile'))
+
     else:
         return redirect(url_for('login'))
-    return render_template('user_profile.html', status=True, form=form)
 
+    return render_template('user_profile.html', status=True, form=form)
 
 @app.route("/history", methods=['GET'])
 def history():
@@ -1953,7 +2012,7 @@ def manage_plans():
 
     return render_template("manage_plans.html", plans=plans, students=students, edit_plan=plan, edit_plan_id=edit_plan_id)
 
-@app.route("/student_plans", methods=["GET"])
+@app.route("/student_plans", methods=["GET","POST"])
 def student_plans():
     if not session.get("email"):
         return redirect(url_for("login"))
@@ -1966,6 +2025,59 @@ def student_plans():
 
     return render_template("student_plans.html", assigned_plans=assigned_plans)
 
+@app.route('/mood_tracker', methods=['GET', 'POST'])
+def mood_tracker():
+    if not session.get("email"):
+        return redirect(url_for("login"))
+    form = MoodTrackerForm()
+    
+    if form.validate_on_submit():
+        # Handle form submission
+# Convert date to datetime before inserting
+        mood_data = {
+            "email": session.get('email'),
+            "date": datetime.now(),
+            "mood_before": form.mood_before.data,
+            "mood_after": form.mood_after.data,
+            "notes": form.notes.data,
+            "workout_id": form.workout_id.data,
+        }
+
+        mongo.db.mood_logs.insert_one(mood_data)  # Save the mood entry in the database
+        flash("Mood entry saved successfully!", "success")
+        return redirect(url_for('mood_history'))  # Redirect to the mood history page
+    
+    # Render the form page for GET requests
+    return render_template('mood_tracker.html', title='Mood Tracker', form=form)
+
+@app.route('/mood_history', methods=['GET'])
+def mood_history():
+    if not session.get("email"):
+        return redirect(url_for("login"))
+
+    # Get the logged-in student's profile
+    student_email = session["email"]
+    student = mongo.db.profile.find_one({"email": student_email})
+
+    # Check if student_profile is found
+    if not student:
+        flash("Student profile not found. Please log in with a valid student account.", "error")
+        return redirect(url_for("login"))
+    mood_logs = mongo.db.mood_logs.find({"email": student_email}).sort("date", -1)  # Sort by date
+
+    return render_template('mood_history.html', mood_logs=mood_logs)
+
+@app.route('/daily_recipe')
+def daily_recipe():
+    # Use today's date as a seed
+    today = datetime.now().strftime('%Y-%m-%d')
+    random.seed(today)  # Set seed based on the current date
+
+    # Select a random recipe deterministically for the day
+    recipe_index = random.randint(0, len(recipes_df) - 1)
+    daily_recipe = recipes_df.iloc[recipe_index].to_dict()
+
+    return render_template('daily_recipe.html', recipe=daily_recipe)
 
 if __name__ == '__main__':
     app.run(debug=True)
