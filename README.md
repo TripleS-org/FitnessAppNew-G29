@@ -7,53 +7,50 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027020.svg)](https://doi.org/10.5281/zenodo.14027020)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/SEFall24-Team61/FitnessAppNew/main)
-[![Python application](https://github.com/VibhavDeo/FitnessApp/actions/workflows/python-app.yml/badge.svg)](https://github.com/VibhavDeo/FitnessApp/actions/workflows/python-app.yml)
-[![Lint](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/syntax_checker.yml/badge.svg)](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/syntax_checker.yml)
-[![Pylint](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/pylint.yml/badge.svg)](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/pylint.yml)
-[![Tests On Push](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/unit_test.yml/badge.svg)](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/unit_test.yml)
-[![Code Coverage](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/code_cov.yml/badge.svg)](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/code_cov.yml)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/TripleS-org/FitnessAppNew-G29/main)
+[![Python application](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/python-app.yml/badge.svg)](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/python-app.yml)
+[![Lint](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/syntax_checker.yml/badge.svg)](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/syntax_checker.yml)
+[![Pylint](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/pylint.yml/badge.svg)](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/pylint.yml)
+[![Tests On Push](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/unit_test.yml/badge.svg)](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/unit_test.yml)
+[![Code Coverage](https://github.com/TripleS-org/FitnessAppNew-G29/actions/workflows/code_cov.yml/badge.svg)](https://github.com/SEFall24-Team61/FitnessAppNew/actions/workflows/code_cov.yml)
 ![GitHub code size in bytes](https://img.shields.io/github/repo-size/SEFall24-Team61/FitnessAppNew)
 
 <!--Badges-->
 <!-- Forks -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew/fork" target="blank">
-  <img src="https://img.shields.io/github/forks/SEFall24-Team61/FitnessAppNew?style=flat-square" alt="FitnessAppNew forks"/>
+<a href="https://github.com/TripleS-org/FitnessAppNew-G29/fork" target="blank">
+  <img src="https://img.shields.io/github/forks/TripleS-org/FitnessAppNew-G29
+  " alt="FitnessAppNew forks"/>
 </a>
 
-<!-- Stars -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew/stargazers" target="blank">
-  <img src="https://img.shields.io/github/stars/SEFall24-Team61/FitnessAppNew?style=flat-square" alt="FitnessAppNew stars"/>
-</a>
 
 <!-- Open Issues -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew/issues" target="blank">
-  <img src="https://img.shields.io/github/issues/SEFall24-Team61/FitnessAppNew?style=flat-square" alt="FitnessAppNew open issues"/>
+<a href="https://github.com/TripleS-org/FitnessAppNew-G29/issues" target="blank">
+  <img src="https://img.shields.io/github/issues/TripleS-org/FitnessAppNew-G29?style=flat-square" alt="FitnessAppNew open issues"/>
 </a>
 
 <!-- Closed Issues -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew/issues?q=is%3Aissue+is%3Aclosed" target="blank">
-  <img src="https://img.shields.io/github/issues-closed/SEFall24-Team61/FitnessAppNew" alt="FitnessAppNew closed issues"/>
+<a href="https://github.com/TripleS-org/FitnessAppNew-G29/issues?q=is%3Aissue+is%3Aclosed" target="blank">
+  <img src="https://img.shields.io/github/issues-closed/TripleS-org/FitnessAppNew-G29" alt="FitnessAppNew closed issues"/>
 </a>
 
 <!-- Pull Requests -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew/pulls" target="blank">
-  <img src="https://img.shields.io/github/issues-pr/SEFall24-Team61/FitnessAppNew?style=flat-square" alt="FitnessAppNew pull requests"/>
+<a href="https://github.com/TripleS-org/FitnessAppNew-G29/pulls" target="blank">
+  <img src="https://img.shields.io/github/issues-pr/TripleS-org/FitnessAppNew-G29?style=flat-square" alt="FitnessAppNew pull requests"/>
 </a>
 
 <!-- Contributors -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew/graphs/contributors" target="blank">
-  <img src="https://img.shields.io/github/contributors/SEFall24-Team61/FitnessAppNew" alt="FitnessAppNew contributors"/>
+<a href="https://github.com/TripleS-org/FitnessAppNew-G29/graphs/contributors" target="blank">
+  <img src="https://img.shields.io/github/contributors/TripleS-org/FitnessAppNew-G29" alt="FitnessAppNew contributors"/>
 </a>
 
 <!-- Commit Activity -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew/graphs/commit-activity" target="blank">
-  <img src="https://img.shields.io/github/commit-activity/w/SEFall24-Team61/FitnessAppNew" alt="FitnessAppNew weekly commit activity"/>
+<a href="https://github.com/TripleS-org/FitnessAppNew-G29/graphs/commit-activity" target="blank">
+  <img src="https://img.shields.io/github/commit-activity/w/TripleS-org/FitnessAppNew-G29" alt="FitnessAppNew weekly commit activity"/>
 </a>
 
 <!-- Repository Size -->
-<a href="https://github.com/SEFall24-Team61/FitnessAppNew" target="blank">
-  <img src="https://img.shields.io/github/repo-size/SEFall24-Team61/FitnessAppNew" alt="FitnessAppNew repository size"/>
+<a href="https://github.com/TripleS-org/FitnessAppNew-G29" target="blank">
+  <img src="https://img.shields.io/github/repo-size/TripleS-org/FitnessAppNew-G29" alt="FitnessAppNew repository size"/>
 </a>
 
 # BurnOut
@@ -67,41 +64,74 @@ BurnOut is an easy-to-use application designed to help users manage their daily 
 https://github.com/user-attachments/assets/23fbcd81-6461-4fec-9066-f7af804c861f
 
 
-## Key Features:
+# **Updated Features of BurnOut**
 
-1. **Calorie Tracking:** BurnOut allows users to effortlessly keep track of their daily calorie intake and calories burnt through physical activities, helping them maintain a healthy lifestyle.
+1. **Progress Monitoring:**  
+   Stay motivated by viewing your fitness journey daily. Celebrate every milestone to stay on track and inspired.  
 
-2. **Profile Customization:** Users can personalize their profiles by entering their height, weight, fitness goals (weight loss or gain), and target weight. This information is crucial for creating tailored fitness and dietary plans.
+2. **Dual Login and Personalized Interaction:**  
+   Students and coaches can log in with dedicated accounts. Coaches can upload videos, provide tailored feedback, and assign custom workouts to enhance user experience.  
 
-3. **Fitness Programs:** BurnOut offers a variety of fitness programs, including yoga classes and workout sessions, catering to users with different fitness preferences and skill levels.
+3. **Customized Coaching and Workout Plans:**  
+   Coaches can design workout plans that align with user goals, provide feedback, and adjust difficulty levels as users improve.  
 
-4. **Social Connectivity:** The application facilitates social interaction among users. They can connect with friends by sending and accepting friend requests, enabling them to share their fitness journeys and progress, and provide support and motivation to one another.
+4. **Mood Tracker:**  
+   Users can log their mood before and after workouts, helping them stay aware of emotional patterns related to their fitness routines.  
 
-5. **Favorite Workouts:** Users can now add their favorite workouts to a dedicated list for quick and easy access, making it convenient to stick to their preferred exercise routines.
+5. **Recipe Suggestions:**  
+   The app provides a selection of healthy, simple recipes tailored to the user's fitness goals (e.g., weight loss, muscle gain).  
 
-6. **Water Intake:** Users can now record their daiy water intake to keep track of their drinking habits.
+6. **Customize Dashboard:**  
+   Users can personalize their dashboard by selecting features like water intake, calories burnt, and their favorite workouts for a more tailored experience.  
 
-8. **Shop:** Places where user can shop for workout gears.
+---
 
-9. **BMI Calculator:** The newly added BMI (Body Mass Index) calculator helps users understand their current physical health status and aids in setting realistic weight management goals.
+# **Existing Features**
 
-10. **Tracking User History:** BurnOut enables users to maintain a history of their fitness and dietary activities, providing insights into their progress over time and allowing for data-driven adjustments.
+7. **Calorie Tracking:**  
+   Effortlessly monitor daily calorie intake and calories burnt to maintain a healthy lifestyle.  
 
-11. **Reviews:** Users can leave reviews and feedback on the fitness programs they've participated in, sharing their experiences with the community and helping others make informed choices.
+8. **Profile Customization:**  
+   Enter personal details like height, weight, fitness goals, and target weight for tailored fitness and dietary plans.  
 
-12. **Personalized Feedback and Check-Ins:** Coaches can design tailored workout plans that align with users' goals (e.g., weight loss, strength-building) and adjust difficulty as users improve, ensuring steady progress.
+9. **Fitness Programs:**  
+   Choose from a variety of fitness programs, including yoga and workout sessions, to suit different preferences and skill levels.  
 
-13. **Detailed Instructions and Exercise Alternatives:** Users receive regular check-ins and feedback from coaches based on their performance metrics, keeping routines adaptable and responsive to user needs.
+10. **Social Connectivity:**  
+    Connect with friends, share fitness journeys, and provide mutual support and motivation.  
 
-14. **Goal-Based and Progressive Plans:** Each plan includes clear exercise instructions, videos, and alternative exercises for users without specific equipment, making workouts accessible and effective.
-    
-16. **Progress Monitoring:** Stay motivated by tracking your fitness journey. Input your measurements daily, review your progress history, and celebrate every milestone along the way.
-    
-18. **Workout Streaks:** Keep the momentum going by logging your workouts each day to maintain a streak. If you miss a day, the streak resets, pushing you to stay consistent and achieve your goals.
-    
-20. **Personalized Workout Recommender:** Get workouts tailored specifically to you. Input your experience level, target muscles, and available equipment, and BurnOut will recommend the most effective exercises, complete with images to guide your form.
-    
-22. **Friends & Community Support:** Connect with friends within the app, accept friend requests, and share your daily progress to support and motivate each other in achieving your fitness goals.
+11. **Favorite Workouts:**  
+    Quickly access preferred exercises by adding them to a favorites list.  
+
+12. **Water Intake:**  
+    Track daily water consumption to develop healthier drinking habits.  
+
+13. **Shop:**  
+    Purchase workout gear directly through the app.  
+
+14. **BMI Calculator:**  
+    Assess physical health and set realistic weight management goals with the BMI calculator.  
+
+15. **Tracking User History:**  
+    Review past fitness and dietary activities for progress insights and informed adjustments.  
+
+16. **Reviews:**  
+    Share experiences and feedback on fitness programs, helping others in the community make informed choices.  
+
+17. **Detailed Instructions and Exercise Alternatives:**  
+    Access clear exercise instructions, videos, and alternative options for equipment-free workouts.  
+
+18. **Goal-Based and Progressive Plans:**  
+    Stay on track with tailored plans that adapt as users progress, focusing on their specific goals.  
+
+19. **Workout Streaks:**  
+    Maintain daily workout streaks to build consistency. Missing a day resets the streak, motivating users to stay on course.  
+
+20. **Personalized Workout Recommender:**  
+    Receive exercise suggestions tailored to your experience, target muscles, and available equipment, complete with instructional images.  
+
+21. **Friends & Community Support:**  
+    Build a support network by connecting with friends, sharing progress, and motivating each other toward fitness goals.
 
 
 This document serves as a comprehensive reference point for users, giving them insight into the functionalities of BurnOut and encouraging them to participate in its development as an open-source software project. As an open-source project, the community can contribute additional features and enhancements to make BurnOut even more robust and tailored to individual needs before its official market release. Furthermore, it assists developers by providing a clear understanding of the codebase and serves as a valuable resource for the project's continued development.
@@ -156,46 +186,46 @@ This document serves as a comprehensive reference point for users, giving them i
 
 ## Login
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/loginPic.PNG">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/loginPic.PNG">
 
 ## Dashboard
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/dashboardPic.PNG">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/dashboardPic.PNG">
 
 ## Exercise Section
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/excercisePic.PNG">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/excercisePic.PNG">
 
 ## Enter Calories
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/historyPic.PNG">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/historyPic.PNG">
 
 ## Enter Water Intakes
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/water.PNG">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/water.PNG">
 
 ## View User Profile
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/profile1.0.jpeg">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/profile1.0.jpeg">
 
 # #
 # New features added #
 
 ## Progress Monitor
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/progressMonitorPic.png">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/progressMonitorPic.png">
 
 ## Wellness Log
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/wellnessLogPic.png">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/wellnessLogPic.png">
 
 ## Workout Streak
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/workoutstreakPic.png">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/workoutstreakPic.png">
 
 ## Workout recommender
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/recommenderPic.png">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/recommenderPic.png">
 
 ## Community
 
@@ -203,15 +233,15 @@ This document serves as a comprehensive reference point for users, giving them i
 
 ## Signup As Coach
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/new_signup.png">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/new_signup.png">
 
 ## Get Personalized Workouts
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/personalized_workouts.png">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/personalized_workouts.png">
 
 ## Track Student Progress
 
-<img src="https://raw.githubusercontent.com/SEFall24-Team61/FitnessAppNew/main/static/img/student_progress.png">
+<img src="https://raw.githubusercontent.com/TripleS-org/FitnessAppNew-G29/main/static/img/student_progress.png">
 
 # Steps for execution
 
@@ -227,11 +257,11 @@ https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
 Step 2:
 Git Clone the Repository
 
-    git clone https://github.com/SEFall24-Team61/FitnessAppNew.git
+    git clone https://github.com/TripleS-org/FitnessAppNew-G29.git
 
 (OR) Download the .zip file on your local machine
 
-    https://github.com/SEFall24-Team61/FitnessAppNew.git
+    https://github.com/TripleS-org/FitnessAppNew-G29.git
 
 Step 3:
 Install the required packages by running the following command in the terminal
@@ -276,24 +306,15 @@ Coverage -> 71%
 
 **Medical History Consideration:** Provide users with option to get recommendations based on their medical history and injuries.
 
-# Team Members
-
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/LuDraa"><img src="https://avatars.githubusercontent.com/u/143905092?v=4" width="75px;" alt=""/><br /><sub><b>Shardul Khare</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/shrutid02"><img src="https://avatars.githubusercontent.com/u/143905049?v=4" width="75px;" alt=""/><br /><sub><b>Shruti Dhond</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/pranavman11"><img src="https://avatars.githubusercontent.com/u/38797209?v=4" width="75px;" alt=""/><br /><sub><b>Pranav Manbhekar</b></sub></a></td>
-  </tr>
-</table>
 
 # Contribution
 
-Please refer the [CONTRIBUTING.md](https://github.com/SEFall24-Team61/FitnessAppNew/blob/main/CONTRIBUTING.md) file for instructions on how to contribute to our repository.
+Please refer the [CONTRIBUTING.md](https://github.com/TripleS-org/FitnessAppNew-G29/blob/main/CONTRIBUTING.md) file for instructions on how to contribute to our repository.
 
   <p align="center">
-    <a href="https://github.com/SEFall24-Team61/FitnessAppNew/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/TripleS-org/FitnessAppNew-G29/issues/new/choose">Report Bug</a>
     /
-    <a href="https://github.com/SEFall24-Team61/FitnessAppNew/issues/new/choose">Request Feature</a>
+    <a href="https://github.com/TripleS-org/FitnessAppNew-G29/issues/new/choose">Request Feature</a>
   </p>
 
 # License
