@@ -50,11 +50,9 @@
 
 BurnOut is an easy-to-use application designed to help users manage their daily calorie intake and expenditure as well as drinking habits, and it has now been enhanced with additional features. This all-in-one wellness app is not only a user-friendly calorie tracker but also offers a comprehensive suite of tools to support individuals in achieving their fitness and weight management goals.
 
-https://github.com/user-attachments/assets/23fbcd81-6461-4fec-9066-f7af804c861f
-
 # Link to new features video:
 
-[Link](https://drive.google.com/file/d/1JrFG1_1Hd8auymBR45ZmKW4HuM_TYOi6/view?usp=sharing)
+[Link](https://github.com/TripleS-org/FitnessAppNew-G29/blob/main/BurnoutVideo.mp4)
 <br>
 <br>
 # **Updated Features of BurnOut**
