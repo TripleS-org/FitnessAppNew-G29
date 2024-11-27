@@ -1,8 +1,4 @@
-# Link to new features video:
 
-[Link](https://drive.google.com/file/d/1JrFG1_1Hd8auymBR45ZmKW4HuM_TYOi6/view?usp=sharing)
-<br>
-<br>
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027020.svg)](https://doi.org/10.5281/zenodo.14027020)
@@ -16,13 +12,6 @@
 ![GitHub code size in bytes](https://img.shields.io/github/repo-size/SEFall24-Team61/FitnessAppNew)
 
 <!--Badges-->
-<!-- Forks -->
-<a href="https://github.com/TripleS-org/FitnessAppNew-G29/fork" target="blank">
-  <img src="https://img.shields.io/github/forks/TripleS-org/FitnessAppNew-G29
-  " alt="FitnessAppNew forks"/>
-</a>
-
-
 <!-- Open Issues -->
 <a href="https://github.com/TripleS-org/FitnessAppNew-G29/issues" target="blank">
   <img src="https://img.shields.io/github/issues/TripleS-org/FitnessAppNew-G29?style=flat-square" alt="FitnessAppNew open issues"/>
@@ -63,7 +52,11 @@ BurnOut is an easy-to-use application designed to help users manage their daily 
 
 https://github.com/user-attachments/assets/23fbcd81-6461-4fec-9066-f7af804c861f
 
+# Link to new features video:
 
+[Link](https://drive.google.com/file/d/1JrFG1_1Hd8auymBR45ZmKW4HuM_TYOi6/view?usp=sharing)
+<br>
+<br>
 # **Updated Features of BurnOut**
 
 1. **Progress Monitoring:**  
