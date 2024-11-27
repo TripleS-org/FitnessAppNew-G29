@@ -126,7 +126,7 @@
           <a href="{{ url_for('manage_plans', edit_plan_id=plan._id) }}" class="btn btn-primary btn-sm">Edit</a>
           <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#assignModal" onclick="setPlanId('{{ plan._id }}')">Assign to Students</button>
         </div>
-      </li>
+      </li> 
       {% endfor %}
     </ul>
 
@@ -164,7 +164,7 @@
   </main>
 
   <script>
-    let stepCount = {{ edit_plan.steps|length if edit_plan and edit_plan.steps else 0 }};
+    //let stepCount = {{ edit_plan.steps|length if edit_plan and edit_plan.steps else 0 }};
 
     function addStep() {
       stepCount++;
